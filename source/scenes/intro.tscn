@@ -1,0 +1,323 @@
+[gd_scene load_steps=27 format=3 uid="uid://8fgdwxnmt4vr"]
+
+[ext_resource type="Script" uid="uid://bwyrnxkwu032q" path="res://scripts/title.gd" id="2_0naf5"]
+[ext_resource type="FontFile" uid="uid://ctj8dwwl487io" path="res://assets/RetroByte.ttf" id="3_bu1yb"]
+[ext_resource type="Script" uid="uid://b1wyn17ahx1va" path="res://scripts/continue.gd" id="4_t1qkj"]
+[ext_resource type="PackedScene" uid="uid://5ol6nv81riat" path="res://scenes/demo.tscn" id="5_272cy"]
+[ext_resource type="PackedScene" uid="uid://ds45m3hurcnf2" path="res://scenes/fade.tscn" id="6_37iue"]
+[ext_resource type="Script" uid="uid://ssfrxdnc1hdx" path="res://scripts/bg.gd" id="6_es01l"]
+[ext_resource type="PackedScene" uid="uid://ckani42b3mc77" path="res://scenes/card.tscn" id="7_272cy"]
+[ext_resource type="Texture2D" uid="uid://cwhofduqwe2ul" path="res://assets/title.png" id="8_37iue"]
+[ext_resource type="Script" uid="uid://ct7psbuhlwuwb" path="res://scripts/attack_resource.gd" id="8_n6p8m"]
+[ext_resource type="Texture2D" uid="uid://cf5mn0ko6m65w" path="res://assets/cards/card_two.png" id="9_n6p8m"]
+[ext_resource type="Script" uid="uid://ccsdjdpj3mod5" path="res://scripts/card_resource.gd" id="10_m3r7s"]
+[ext_resource type="FontFile" uid="uid://ljeu5tf3k34a" path="res://assets/terminal-grotesque.ttf" id="12_n6p8m"]
+[ext_resource type="Texture2D" uid="uid://bvhpfyp1i0kxi" path="res://assets/line.png" id="13_m3r7s"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_n6p8m"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyl7j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3w7a"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rr2b"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yql1r"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ia1n6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_m3r7s"]
+Button/styles/focus = SubResource("StyleBoxFlat_pyl7j")
+Button/styles/hover = SubResource("StyleBoxFlat_b3w7a")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_4rr2b")
+Button/styles/normal = SubResource("StyleBoxFlat_yql1r")
+Button/styles/pressed = SubResource("StyleBoxFlat_ia1n6")
+
+[sub_resource type="Gradient" id="Gradient_vephn"]
+offsets = PackedFloat32Array(0, 0.265823, 0.664557, 0.831224, 0.981013)
+colors = PackedColorArray(0, 0, 0, 1, 0.518116, 0.518116, 0.518116, 1, 1, 1, 1, 1, 0.645673, 0.645673, 0.645673, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vephn"]
+noise_type = 2
+offset = Vector3(23.81, 0, 0)
+fractal_type = 3
+fractal_octaves = 10
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0naf5"]
+width = 200
+height = 200
+as_normal_map = true
+color_ramp = SubResource("Gradient_vephn")
+noise = SubResource("FastNoiseLite_vephn")
+
+[sub_resource type="Resource" id="Resource_m3r7s"]
+script = ExtResource("8_n6p8m")
+name = "Attack 1"
+min_damage = 10
+max_damage = 10
+success_chance = 1.0
+milk_cost = 10
+desc = "Attack1 Description"
+metadata/_custom_type_script = "uid://ct7psbuhlwuwb"
+
+[sub_resource type="Resource" id="Resource_u5myo"]
+script = ExtResource("8_n6p8m")
+name = "Attack 2"
+min_damage = 10
+max_damage = 10
+success_chance = 1.0
+milk_cost = 10
+desc = "Attack2 Description"
+metadata/_custom_type_script = "uid://ct7psbuhlwuwb"
+
+[sub_resource type="Resource" id="Resource_xwriy"]
+script = ExtResource("10_m3r7s")
+name = "Card Name"
+max_health = 100
+weakness = 6
+milk_cost = 100
+attack_1 = SubResource("Resource_m3r7s")
+attack_2 = SubResource("Resource_u5myo")
+card_type = 5
+desc = "Description for this card."
+image = ExtResource("9_n6p8m")
+face_image = ExtResource("8_37iue")
+metadata/_custom_type_script = "uid://ccsdjdpj3mod5"
+
+[node name="Node2D" type="Node2D"]
+texture_filter = 1
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(-257, -242)
+scale = Vector2(0.74375, 0.74375)
+texture = SubResource("ViewportTexture_n6p8m")
+script = ExtResource("2_0naf5")
+
+[node name="Continue" type="Button" parent="."]
+offset_left = 410.0
+offset_top = 247.0
+offset_right = 480.0
+offset_bottom = 278.0
+scale = Vector2(1.8, 1.8)
+theme = SubResource("Theme_m3r7s")
+theme_override_colors/font_hover_pressed_color = Color(0.25098, 0.329412, 0.490196, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.796078, 0.862745, 0.988235, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_bu1yb")
+theme_override_font_sizes/font_size = 20
+text = "continue"
+script = ExtResource("4_t1qkj")
+load = ExtResource("5_272cy")
+
+[node name="Fade" parent="." instance=ExtResource("6_37iue")]
+visible = false
+z_index = 1000
+position = Vector2(16, 7)
+scale = Vector2(49.44, 22.44)
+fade_type = 0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(700, 100)
+
+[node name="Label" type="Label" parent="SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_bu1yb")
+theme_override_font_sizes/font_size = 100
+text = "HOW TO PLAY"
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.141176, 0.545098, 1, 1)
+z_index = -1
+texture_filter = 1
+position = Vector2(4.50004, 1.99999)
+scale = Vector2(6.385, 3.89)
+texture = SubResource("NoiseTexture2D_0naf5")
+script = ExtResource("6_es01l")
+SPEED = 5.0
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Card" parent="." instance=ExtResource("7_272cy")]
+position = Vector2(-357, 43)
+scale = Vector2(4.96, 4.96)
+res = SubResource("Resource_xwriy")
+
+[node name="Labels" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Labels"]
+offset_left = -95.0
+offset_top = -203.0
+offset_right = 113.0
+offset_bottom = -172.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("12_n6p8m")
+theme_override_font_sizes/font_size = 30
+text = "name of the card"
+
+[node name="Label9" type="Label" parent="Labels"]
+offset_left = 184.0
+offset_top = -116.0
+offset_right = 567.0
+offset_bottom = 51.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("12_n6p8m")
+theme_override_font_sizes/font_size = 30
+text = "GAMEPLAY:
+- pick your cards to fight
+- you need milk to play attackts
+- you get milk each turn
+- player who dies first loses
+- have fun or something"
+
+[node name="Label2" type="Label" parent="Labels"]
+offset_left = -62.0
+offset_top = -126.0
+offset_right = 146.0
+offset_bottom = -95.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("12_n6p8m")
+theme_override_font_sizes/font_size = 30
+text = "health points"
+
+[node name="Label3" type="Label" parent="Labels"]
+offset_left = -12.0
+offset_top = -62.0
+offset_right = 196.0
+offset_bottom = -31.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("12_n6p8m")
+theme_override_font_sizes/font_size = 30
+text = "image"
+
+[node name="Label4" type="Label" parent="Labels"]
+offset_left = -20.0
+offset_top = 4.0
+offset_right = 188.0
+offset_bottom = 35.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("12_n6p8m")
+theme_override_font_sizes/font_size = 30
+text = "card type"
+
+[node name="Label5" type="Label" parent="Labels"]
+offset_left = -22.0
+offset_top = 78.0
+offset_right = 186.0
+offset_bottom = 109.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("12_n6p8m")
+theme_override_font_sizes/font_size = 30
+text = "attack one info"
+
+[node name="Label6" type="Label" parent="Labels"]
+offset_left = -25.0
+offset_top = 149.0
+offset_right = 183.0
+offset_bottom = 180.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("12_n6p8m")
+theme_override_font_sizes/font_size = 30
+text = "attack two info"
+
+[node name="Label7" type="Label" parent="Labels"]
+offset_left = -92.0
+offset_top = 294.0
+offset_right = 116.0
+offset_bottom = 325.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("12_n6p8m")
+theme_override_font_sizes/font_size = 30
+text = "weakness type"
+
+[node name="Label8" type="Label" parent="Labels"]
+offset_left = -49.0
+offset_top = 224.0
+offset_right = 159.0
+offset_bottom = 255.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("12_n6p8m")
+theme_override_font_sizes/font_size = 30
+text = "milk cost"
+metadata/_edit_use_anchors_ = true
+
+[node name="Line" type="Sprite2D" parent="Labels"]
+position = Vector2(-214.384, -175.347)
+rotation = -0.894734
+scale = Vector2(1.7992, 1.76049)
+texture = ExtResource("13_m3r7s")
+
+[node name="Line2" type="Sprite2D" parent="Labels"]
+position = Vector2(-151.07, -124.972)
+rotation = -0.894734
+scale = Vector2(0.816942, 1.62361)
+texture = ExtResource("13_m3r7s")
+
+[node name="Line3" type="Sprite2D" parent="Labels"]
+position = Vector2(-152.815, -48.6112)
+rotation = -0.894734
+scale = Vector2(1.61979, 2.18941)
+texture = ExtResource("13_m3r7s")
+
+[node name="Line4" type="Sprite2D" parent="Labels"]
+position = Vector2(-135.5, 28.0601)
+rotation = -0.894734
+scale = Vector2(1.43705, 1.70782)
+texture = ExtResource("13_m3r7s")
+
+[node name="Line5" type="Sprite2D" parent="Labels"]
+position = Vector2(-163.213, 89.7038)
+rotation = -0.894734
+scale = Vector2(1.44895, 2.1287)
+texture = ExtResource("13_m3r7s")
+
+[node name="Line6" type="Sprite2D" parent="Labels"]
+position = Vector2(-162, 160)
+rotation = -0.894734
+scale = Vector2(1.44895, 2.1287)
+texture = ExtResource("13_m3r7s")
+
+[node name="Line7" type="Sprite2D" parent="Labels"]
+position = Vector2(-135.468, 235.287)
+rotation = -0.894734
+scale = Vector2(1.04842, 1.45538)
+texture = ExtResource("13_m3r7s")
+
+[node name="Line8" type="Sprite2D" parent="Labels"]
+position = Vector2(-226.236, 275.449)
+rotation = -0.894734
+scale = Vector2(1.29302, 2.63766)
+texture = ExtResource("13_m3r7s")
+
+[connection signal="pressed" from="Continue" to="Continue" method="_on_pressed"]

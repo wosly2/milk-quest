@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cet02ne2b6pad"]
+
+[ext_resource type="FontFile" uid="uid://ljeu5tf3k34a" path="res://assets/terminal-grotesque.ttf" id="1_q8piw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irkjx"]
+bg_color = Color(0, 0, 0, 0.878431)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="FallingMessage" type="Label"]
+z_index = 1000
+texture_filter = 1
+offset_right = 69.0
+offset_bottom = 23.0
+scale = Vector2(2.12, 2.12)
+theme_override_fonts/font = ExtResource("1_q8piw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_irkjx")
+text = "message generator"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AttackResource" load_steps=2 format=3 uid="uid://bixresx4mob8d"]
+
+[ext_resource type="Script" uid="uid://ct7psbuhlwuwb" path="res://scripts/attack_resource.gd" id="1_umq8x"]
+
+[resource]
+script = ExtResource("1_umq8x")
+name = "Soak"
+min_damage = 10
+max_damage = 15
+success_chance = 0.8
+milk_cost = 6
+desc = "Seep in. 10-15 Damage."
+metadata/_custom_type_script = "uid://ct7psbuhlwuwb"

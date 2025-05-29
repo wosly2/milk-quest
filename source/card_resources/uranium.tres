@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://digx0oj0w6npd"]
+
+[ext_resource type="Script" uid="uid://ccsdjdpj3mod5" path="res://scripts/card_resource.gd" id="1_p55di"]
+[ext_resource type="Resource" uid="uid://3dc7fvd7jeyt" path="res://card_resources/attack_resources/irradiate.tres" id="1_wq3tk"]
+[ext_resource type="Resource" uid="uid://scovf0xaae7m" path="res://card_resources/attack_resources/poke.tres" id="2_ksorn"]
+[ext_resource type="Texture2D" uid="uid://cw0bnnryb1rm8" path="res://assets/cards/card_four.png" id="2_sfatp"]
+[ext_resource type="Texture2D" uid="uid://u43docwvh1im" path="res://assets/uranium.png" id="3_ksorn"]
+
+[resource]
+script = ExtResource("1_p55di")
+name = "Uranium"
+max_health = 130
+weakness = 0
+milk_cost = 30
+attack_1 = ExtResource("1_wq3tk")
+attack_2 = ExtResource("2_ksorn")
+card_type = 4
+desc = "A key ingredient in Choco Shmigs."
+image = ExtResource("2_sfatp")
+face_image = ExtResource("3_ksorn")
+metadata/_custom_type_script = "uid://ccsdjdpj3mod5"

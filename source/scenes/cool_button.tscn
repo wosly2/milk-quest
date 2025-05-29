@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxp7csr55hwpx"]
+
+[ext_resource type="Script" uid="uid://bp4evmo010im6" path="res://scripts/cool_button.gd" id="1_ttquv"]
+[ext_resource type="AudioStream" uid="uid://dyqc8nlabufoh" path="res://assets/mouse.mp3" id="2_mqswp"]
+[ext_resource type="FontFile" uid="uid://ljeu5tf3k34a" path="res://assets/terminal-grotesque.ttf" id="3_mqswp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttquv"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="CoolButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "cool button"
+script = ExtResource("1_ttquv")
+desc = "desc text"
+sound = ExtResource("2_mqswp")
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+
+[node name="DescPoint" type="Node2D" parent="."]
+
+[node name="Desc" type="Label" parent="DescPoint"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.717647)
+z_index = 1000
+offset_right = 220.0
+offset_bottom = 73.0
+scale = Vector2(0.440001, 0.440001)
+theme_override_fonts/font = ExtResource("3_mqswp")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ttquv")
+text = "desc text"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

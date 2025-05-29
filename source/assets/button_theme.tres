@@ -1,0 +1,61 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://tfplbndr5a4g"]
+
+[ext_resource type="FontFile" uid="uid://ctj8dwwl487io" path="res://assets/RetroByte.ttf" id="1_lbl2b"]
+[ext_resource type="FontFile" uid="uid://ljeu5tf3k34a" path="res://assets/terminal-grotesque.ttf" id="2_3utsd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbl2b"]
+bg_color = Color(1, 1, 0.819608, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 3
+border_color = Color(0.93558, 0.732939, 0.815972, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3utsd"]
+bg_color = Color(1, 0.643137, 0.819608, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 3
+border_color = Color(0.93558, 0.732939, 0.815972, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6ikf"]
+bg_color = Color(1, 0.292372, 0.535817, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.86603, 0, 0.454685, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lh5at"]
+bg_color = Color(0, 0.710778, 0.469676, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.561631, 0.361424, 1)
+
+[resource]
+default_font = ExtResource("1_lbl2b")
+Button/colors/font_color = Color(0, 0.792157, 0.0823529, 1)
+Button/colors/font_disabled_color = Color(0, 0.203922, 0, 0.501961)
+Button/colors/font_focus_color = Color(0, 0.94902, 0.647059, 1)
+Button/colors/font_hover_color = Color(0, 0.94902, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0.960784, 0, 0.239216, 1)
+Button/colors/font_outline_color = Color(1, 0.172549, 1, 1)
+Button/colors/font_pressed_color = Color(1, 0.203922, 0, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/outline_size = 4
+Button/fonts/font = ExtResource("1_lbl2b")
+Button/styles/hover = SubResource("StyleBoxFlat_lbl2b")
+Button/styles/normal = SubResource("StyleBoxFlat_3utsd")
+Button/styles/pressed = SubResource("StyleBoxFlat_3utsd")
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("2_3utsd")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_n6ikf")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_lh5at")

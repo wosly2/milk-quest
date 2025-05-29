@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://p62ybhsrtggm"]
+
+[ext_resource type="Resource" uid="uid://bixresx4mob8d" path="res://card_resources/attack_resources/soak.tres" id="1_0sajn"]
+[ext_resource type="Script" uid="uid://ccsdjdpj3mod5" path="res://scripts/card_resource.gd" id="1_dlg1e"]
+[ext_resource type="Resource" uid="uid://scovf0xaae7m" path="res://card_resources/attack_resources/poke.tres" id="2_h5qrp"]
+[ext_resource type="Texture2D" uid="uid://cf5mn0ko6m65w" path="res://assets/cards/card_two.png" id="3_0sajn"]
+[ext_resource type="Texture2D" uid="uid://bx0ee1aism5yn" path="res://assets/spoon.png" id="3_u5ppk"]
+
+[resource]
+script = ExtResource("1_dlg1e")
+name = "Spoon"
+max_health = 100
+weakness = 1
+milk_cost = 10
+attack_1 = ExtResource("1_0sajn")
+attack_2 = ExtResource("2_h5qrp")
+card_type = 2
+desc = "You can see your reflection in it."
+image = ExtResource("3_0sajn")
+face_image = ExtResource("3_u5ppk")
+metadata/_custom_type_script = "uid://ccsdjdpj3mod5"

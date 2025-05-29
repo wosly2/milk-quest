@@ -1,0 +1,74 @@
+[gd_scene load_steps=15 format=3 uid="uid://vkj3xk8kf5q0"]
+
+[ext_resource type="Texture2D" uid="uid://cwhofduqwe2ul" path="res://assets/title.png" id="1_4ignj"]
+[ext_resource type="Texture2D" uid="uid://bfalv7ppxqtdl" path="res://assets/titlebg.png" id="1_wosw1"]
+[ext_resource type="Script" uid="uid://bwyrnxkwu032q" path="res://scripts/title.gd" id="3_4rr2b"]
+[ext_resource type="FontFile" uid="uid://ctj8dwwl487io" path="res://assets/RetroByte.ttf" id="3_p6dhs"]
+[ext_resource type="Script" uid="uid://b1wyn17ahx1va" path="res://scripts/continue.gd" id="4_pyl7j"]
+[ext_resource type="PackedScene" uid="uid://5ol6nv81riat" path="res://scenes/demo.tscn" id="6_yql1r"]
+[ext_resource type="PackedScene" uid="uid://8fgdwxnmt4vr" path="res://scenes/intro.tscn" id="7_ia1n6"]
+[ext_resource type="PackedScene" uid="uid://ds45m3hurcnf2" path="res://scenes/fade.tscn" id="7_yql1r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yql1r"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ia1n6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hiwto"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w65of"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygloa"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_hiwto"]
+Button/styles/focus = SubResource("StyleBoxFlat_yql1r")
+Button/styles/hover = SubResource("StyleBoxFlat_ia1n6")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_hiwto")
+Button/styles/normal = SubResource("StyleBoxFlat_w65of")
+Button/styles/pressed = SubResource("StyleBoxFlat_ygloa")
+
+[node name="Title" type="Node2D"]
+texture_filter = 1
+
+[node name="Titlebg" type="Sprite2D" parent="."]
+position = Vector2(575, 361)
+scale = Vector2(5.04167, 5.21333)
+texture = ExtResource("1_wosw1")
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(451, 288)
+scale = Vector2(0.74375, 0.74375)
+texture = ExtResource("1_4ignj")
+script = ExtResource("3_4rr2b")
+
+[node name="Continue" type="Button" parent="."]
+offset_left = 982.0
+offset_top = 537.0
+offset_right = 1040.0
+offset_bottom = 568.0
+scale = Vector2(1.8, 1.8)
+theme = SubResource("Theme_hiwto")
+theme_override_colors/font_hover_pressed_color = Color(0.25098, 0.329412, 0.490196, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.796078, 0.862745, 0.988235, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_p6dhs")
+theme_override_font_sizes/font_size = 20
+text = "Start"
+script = ExtResource("4_pyl7j")
+load = ExtResource("6_yql1r")
+other_load = ExtResource("7_ia1n6")
+load_other = true
+
+[node name="Fade" parent="." instance=ExtResource("7_yql1r")]
+visible = false
+position = Vector2(586, 322)
+scale = Vector2(49.44, 22.44)
+fade_type = 0
+
+[connection signal="pressed" from="Continue" to="Continue" method="_on_pressed"]
+[connection signal="finished" from="Fade" to="Continue" method="_on_fade_finished"]

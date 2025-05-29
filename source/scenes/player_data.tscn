@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://vd82rhf36sjn"]
+
+[ext_resource type="Theme" uid="uid://tfplbndr5a4g" path="res://assets/button_theme.tres" id="1_2ekn2"]
+[ext_resource type="Script" uid="uid://cmsrhl6y1eilp" path="res://scripts/player_data.gd" id="1_44s2u"]
+[ext_resource type="PackedScene" uid="uid://ckani42b3mc77" path="res://scenes/card.tscn" id="2_f33y7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f33y7"]
+bg_color = Color(0.888439, 0.974426, 1, 1)
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44s2u"]
+bg_color = Color(0.716732, 0.875214, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.483695, 0.737502, 1, 1)
+
+[node name="PlayerData" type="Node2D"]
+script = ExtResource("1_44s2u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+offset_right = 139.0
+offset_bottom = 87.0
+theme = ExtResource("1_2ekn2")
+
+[node name="PlayerNum" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+text = "PLAYER ONE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardName" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+text = "CHOSEN CARD"
+horizontal_alignment = 1
+
+[node name="HPCont" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HPCont"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "HP:"
+horizontal_alignment = 1
+
+[node name="HP" type="ProgressBar" parent="VBoxContainer/HPCont"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_2ekn2")
+value = 50.0
+rounded = true
+allow_greater = true
+
+[node name="MilkCont" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MilkCont"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Mk:"
+horizontal_alignment = 1
+
+[node name="Milk" type="ProgressBar" parent="VBoxContainer/MilkCont"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_2ekn2")
+theme_override_colors/font_color = Color(9.62615e-08, 0.266168, 0.418804, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_f33y7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_44s2u")
+value = 50.0
+rounded = true
+
+[node name="Card" parent="." instance=ExtResource("2_f33y7")]
+unique_name_in_owner = true
+position = Vector2(181, 48)
+scale = Vector2(1.04, 1.04)

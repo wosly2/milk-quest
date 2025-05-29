@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds45m3hurcnf2"]
+
+[ext_resource type="Script" uid="uid://d3hiygaq342c8" path="res://scripts/fade.gd" id="1_76d3x"]
+[ext_resource type="Texture2D" uid="uid://cy6ymgme8uyn8" path="res://assets/block.png" id="2_85vtu"]
+
+[node name="Fade" type="Node2D"]
+script = ExtResource("1_76d3x")
+
+[node name="Block" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(34.84, 38.12)
+texture = ExtResource("2_85vtu")

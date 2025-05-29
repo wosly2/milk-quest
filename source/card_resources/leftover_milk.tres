@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://cwugtoasg22jo"]
+
+[ext_resource type="Script" uid="uid://ccsdjdpj3mod5" path="res://scripts/card_resource.gd" id="1_op6is"]
+[ext_resource type="Resource" uid="uid://bixresx4mob8d" path="res://card_resources/attack_resources/soak.tres" id="1_wwbvw"]
+[ext_resource type="Resource" uid="uid://cpxxw851t5vav" path="res://card_resources/attack_resources/scoop.tres" id="2_14npj"]
+[ext_resource type="Texture2D" uid="uid://chlcaafyoslfm" path="res://assets/soured.png" id="3_14npj"]
+[ext_resource type="Texture2D" uid="uid://7ylfmf2qbt55" path="res://assets/cards/card_one.png" id="3_gyjt3"]
+
+[resource]
+script = ExtResource("1_op6is")
+name = "Soured Milk"
+max_health = 60
+weakness = 3
+milk_cost = 8
+attack_1 = ExtResource("1_wwbvw")
+attack_2 = ExtResource("2_14npj")
+card_type = 0
+desc = "Tangy!"
+image = ExtResource("3_gyjt3")
+face_image = ExtResource("3_14npj")
+metadata/_custom_type_script = "uid://ccsdjdpj3mod5"

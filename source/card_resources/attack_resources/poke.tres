@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AttackResource" load_steps=2 format=3 uid="uid://scovf0xaae7m"]
+
+[ext_resource type="Script" uid="uid://ct7psbuhlwuwb" path="res://scripts/attack_resource.gd" id="1_0mnjk"]
+
+[resource]
+script = ExtResource("1_0mnjk")
+name = "Poke"
+min_damage = 5
+max_damage = 10
+success_chance = 0.8
+milk_cost = 5
+desc = "Jab 'em! 5-10 Damage."
+metadata/_custom_type_script = "uid://ct7psbuhlwuwb"

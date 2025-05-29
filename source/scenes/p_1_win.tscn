@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://bwluxcsllefyk"]
+
+[ext_resource type="Script" uid="uid://bknmkkxdmddcu" path="res://scripts/p_1_win.gd" id="1_f884f"]
+[ext_resource type="Script" uid="uid://ssfrxdnc1hdx" path="res://scripts/bg.gd" id="1_qd6yl"]
+[ext_resource type="FontFile" uid="uid://ctj8dwwl487io" path="res://assets/RetroByte.ttf" id="2_axifk"]
+[ext_resource type="PackedScene" uid="uid://dxp7csr55hwpx" path="res://scenes/cool_button.tscn" id="3_vwy2i"]
+[ext_resource type="Theme" uid="uid://tfplbndr5a4g" path="res://assets/button_theme.tres" id="5_guqms"]
+[ext_resource type="PackedScene" uid="uid://ds45m3hurcnf2" path="res://scenes/fade.tscn" id="6_guqms"]
+
+[sub_resource type="Gradient" id="Gradient_guqms"]
+offsets = PackedFloat32Array(0, 0.265823, 0.664557, 0.831224, 0.981013)
+colors = PackedColorArray(0, 0, 0, 1, 0.518116, 0.518116, 0.518116, 1, 1, 1, 1, 1, 0.645673, 0.645673, 0.645673, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0vqjw"]
+noise_type = 2
+offset = Vector3(23.81, 0, 0)
+fractal_type = 3
+fractal_octaves = 10
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ghweo"]
+width = 200
+height = 200
+as_normal_map = true
+color_ramp = SubResource("Gradient_guqms")
+noise = SubResource("FastNoiseLite_0vqjw")
+
+[node name="P1win" type="Node2D"]
+script = ExtResource("1_f884f")
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.141176, 0.203922, 1, 1)
+self_modulate = Color(0.487693, 0.79, 0.1422, 1)
+z_index = -1
+texture_filter = 1
+position = Vector2(4.50004, 1.99999)
+scale = Vector2(6.385, 3.89)
+texture = SubResource("NoiseTexture2D_ghweo")
+script = ExtResource("1_qd6yl")
+SPEED = 5.0
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -294.0
+offset_top = -245.0
+offset_right = -142.0
+offset_bottom = -108.0
+scale = Vector2(3.88, 3.88)
+theme_override_fonts/font = ExtResource("2_axifk")
+text = "PLAYER
+ONE
+WINS!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoolButton" parent="." instance=ExtResource("3_vwy2i")]
+offset_left = 457.0
+offset_top = 278.0
+offset_right = 551.0
+offset_bottom = 309.0
+theme = ExtResource("5_guqms")
+text = "Play again?"
+desc = "You know you want to..."
+
+[node name="Fade" parent="." instance=ExtResource("6_guqms")]
+visible = false
+scale = Vector2(39.7242, 29.96)
+fade_type = 0
+
+[connection signal="pressed" from="CoolButton" to="." method="_on_cool_button_pressed"]

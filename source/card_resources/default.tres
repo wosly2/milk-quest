@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://bifsc1jvjdy2r"]
+
+[ext_resource type="Script" uid="uid://ct7psbuhlwuwb" path="res://scripts/attack_resource.gd" id="1_kprxl"]
+[ext_resource type="Script" uid="uid://ccsdjdpj3mod5" path="res://scripts/card_resource.gd" id="1_v7own"]
+[ext_resource type="Texture2D" uid="uid://dvhkyub17hlpu" path="res://assets/cards/default_card.png" id="2_7y874"]
+
+[sub_resource type="Resource" id="Resource_7y874"]
+script = ExtResource("1_kprxl")
+name = "Default Attack"
+min_damage = 10
+max_damage = 10
+success_chance = 1.0
+milk_cost = 10
+desc = "Default attack. 10 Damage."
+metadata/_custom_type_script = "uid://ct7psbuhlwuwb"
+
+[sub_resource type="Resource" id="Resource_rmd0k"]
+script = ExtResource("1_kprxl")
+name = "Default Attack"
+min_damage = 10
+max_damage = 10
+success_chance = 1.0
+milk_cost = 10
+desc = "Default attack. 10 Damage."
+metadata/_custom_type_script = "uid://ct7psbuhlwuwb"
+
+[resource]
+script = ExtResource("1_v7own")
+name = "Default"
+max_health = 100
+weakness = 0
+milk_cost = 20
+attack_1 = SubResource("Resource_7y874")
+attack_2 = SubResource("Resource_rmd0k")
+card_type = 4
+desc = "Default card."
+image = ExtResource("2_7y874")
+metadata/_custom_type_script = "uid://ccsdjdpj3mod5"

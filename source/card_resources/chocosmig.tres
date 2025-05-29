@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://yrdqlxoo85ux"]
+
+[ext_resource type="Resource" uid="uid://3dc7fvd7jeyt" path="res://card_resources/attack_resources/irradiate.tres" id="1_g3w1b"]
+[ext_resource type="Script" uid="uid://ccsdjdpj3mod5" path="res://scripts/card_resource.gd" id="1_g41ud"]
+[ext_resource type="Resource" uid="uid://bixresx4mob8d" path="res://card_resources/attack_resources/soak.tres" id="2_2tr1h"]
+[ext_resource type="Texture2D" uid="uid://cn6m3patovvsl" path="res://assets/choco.png" id="3_2tr1h"]
+[ext_resource type="Texture2D" uid="uid://dq4pbmh83tkbk" path="res://assets/cards/card_three.png" id="3_dlrew"]
+
+[resource]
+script = ExtResource("1_g41ud")
+name = "Choco Shmigs"
+max_health = 150
+weakness = 4
+milk_cost = 15
+attack_1 = ExtResource("1_g3w1b")
+attack_2 = ExtResource("2_2tr1h")
+card_type = 1
+desc = "Banned in the EU."
+image = ExtResource("3_dlrew")
+face_image = ExtResource("3_2tr1h")
+metadata/_custom_type_script = "uid://ccsdjdpj3mod5"

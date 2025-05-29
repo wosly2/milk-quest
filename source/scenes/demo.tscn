@@ -1,0 +1,294 @@
+[gd_scene load_steps=30 format=3 uid="uid://5ol6nv81riat"]
+
+[ext_resource type="Script" uid="uid://dq168g1v7p7dc" path="res://scripts/demo.gd" id="1_l20p6"]
+[ext_resource type="PackedScene" uid="uid://ckani42b3mc77" path="res://scenes/card.tscn" id="2_7qr1p"]
+[ext_resource type="Resource" uid="uid://p62ybhsrtggm" path="res://card_resources/spoon.tres" id="2_ba4lm"]
+[ext_resource type="Script" uid="uid://ccsdjdpj3mod5" path="res://scripts/card_resource.gd" id="3_5fme1"]
+[ext_resource type="Script" uid="uid://ssfrxdnc1hdx" path="res://scripts/bg.gd" id="5_b0nem"]
+[ext_resource type="Texture2D" uid="uid://co0ksntejbw33" path="res://assets/cards/card_back.png" id="5_e66cg"]
+[ext_resource type="Resource" uid="uid://cwugtoasg22jo" path="res://card_resources/leftover_milk.tres" id="5_h5dly"]
+[ext_resource type="PackedScene" uid="uid://vd82rhf36sjn" path="res://scenes/player_data.tscn" id="7_7qr1p"]
+[ext_resource type="Resource" uid="uid://digx0oj0w6npd" path="res://card_resources/uranium.tres" id="7_h5dly"]
+[ext_resource type="Resource" uid="uid://yrdqlxoo85ux" path="res://card_resources/chocosmig.tres" id="7_nwon6"]
+[ext_resource type="Resource" uid="uid://c1235rngbxqni" path="res://card_resources/fiesta.tres" id="8_s3vvr"]
+[ext_resource type="PackedScene" uid="uid://bwluxcsllefyk" path="res://scenes/p_1_win.tscn" id="10_l1es7"]
+[ext_resource type="Theme" uid="uid://tfplbndr5a4g" path="res://assets/button_theme.tres" id="11_6gsge"]
+[ext_resource type="PackedScene" uid="uid://ds45m3hurcnf2" path="res://scenes/fade.tscn" id="11_nwon6"]
+[ext_resource type="PackedScene" uid="uid://dekea7e02d8mc" path="res://scenes/p_2_win.tscn" id="11_u2uoh"]
+[ext_resource type="FontFile" uid="uid://ctj8dwwl487io" path="res://assets/RetroByte.ttf" id="14_7hm0d"]
+[ext_resource type="Script" uid="uid://lutknrcurqp1" path="res://scripts/fight.gd" id="15_l53ft"]
+[ext_resource type="Script" uid="uid://bj2wkix44ebos" path="res://scripts/choice_selector.gd" id="16_c0h4v"]
+[ext_resource type="PackedScene" uid="uid://b023xie8f4bql" path="res://scenes/falling_message_gen.tscn" id="16_l53ft"]
+[ext_resource type="PackedScene" uid="uid://dxp7csr55hwpx" path="res://scenes/cool_button.tscn" id="17_kxneo"]
+[ext_resource type="PackedScene" uid="uid://dx8dhia722pof" path="res://scenes/observer.tscn" id="19_kxneo"]
+
+[sub_resource type="Gradient" id="Gradient_kxneo"]
+offsets = PackedFloat32Array(0, 0.265823, 0.664557, 0.831224, 0.981013)
+colors = PackedColorArray(0, 0, 0, 1, 0.518116, 0.518116, 0.518116, 1, 1, 1, 1, 1, 0.645673, 0.645673, 0.645673, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ixuqm"]
+noise_type = 2
+offset = Vector3(23.81, 0, 0)
+fractal_type = 3
+fractal_octaves = 10
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b0nem"]
+width = 200
+height = 200
+as_normal_map = true
+color_ramp = SubResource("Gradient_kxneo")
+noise = SubResource("FastNoiseLite_ixuqm")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hm0d"]
+bg_color = Color(0.331543, 0.123332, 0.196252, 0.45098)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.407843, 0.00392157, 0.184314, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ixuqm"]
+viewport_path = NodePath("CubeSubviewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kxneo"]
+viewport_path = NodePath("CubeSubviewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_l1es7"]
+viewport_path = NodePath("CubeSubviewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_u2uoh"]
+viewport_path = NodePath("CubeSubviewport")
+
+[node name="Demo" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_l20p6")
+CardPrefab = ExtResource("2_7qr1p")
+CardRecs = Array[ExtResource("3_5fme1")]([ExtResource("5_h5dly"), ExtResource("2_ba4lm"), ExtResource("7_h5dly"), ExtResource("7_nwon6"), ExtResource("8_s3vvr")])
+default_card_texture = ExtResource("5_e66cg")
+p1_win = ExtResource("10_l1es7")
+p2_win = ExtResource("11_u2uoh")
+
+[node name="PlayerData" parent="." instance=ExtResource("7_7qr1p")]
+unique_name_in_owner = true
+position = Vector2(-563, -318)
+scale = Vector2(2.04, 2.04)
+
+[node name="PlayerData2" parent="." instance=ExtResource("7_7qr1p")]
+unique_name_in_owner = true
+position = Vector2(120, -318)
+scale = Vector2(2.04, 2.04)
+player_num = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.392594, 0.456791, 0.360663, 1)
+self_modulate = Color(0.487693, 0.79, 0.1422, 1)
+z_index = -1
+texture_filter = 1
+position = Vector2(4.50004, 1.99999)
+scale = Vector2(6.385, 3.89)
+texture = SubResource("NoiseTexture2D_b0nem")
+script = ExtResource("5_b0nem")
+SPEED = 5.0
+metadata/_edit_lock_ = true
+
+[node name="Cards" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-418, 166)
+metadata/_edit_lock_ = true
+
+[node name="Choose" type="Label" parent="Cards"]
+offset_left = 212.0
+offset_top = -231.0
+offset_right = 398.0
+offset_bottom = -208.0
+scale = Vector2(2.16, 2.16)
+theme = ExtResource("11_6gsge")
+text = "Choose Combatant PX!"
+
+[node name="Fade" parent="." instance=ExtResource("11_nwon6")]
+visible = false
+scale = Vector2(37.04, 21.08)
+fade_type = 0
+
+[node name="Fight" type="Label" parent="."]
+offset_left = -1539.0
+offset_top = -423.0
+offset_right = -1498.0
+offset_bottom = -409.0
+scale = Vector2(16.68, 16.68)
+theme_override_fonts/font = ExtResource("14_7hm0d")
+text = "FIGHT!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("15_l53ft")
+
+[node name="ChoiceSelector" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("16_c0h4v")
+
+[node name="Panel" type="Panel" parent="ChoiceSelector"]
+offset_left = -548.0
+offset_top = 22.0
+offset_right = 550.0
+offset_bottom = 301.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7hm0d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChoiceSelector/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Choose" type="Label" parent="ChoiceSelector/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("11_6gsge")
+theme_override_font_sizes/font_size = 30
+text = "Choose action"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChoiceSelector/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Buff" parent="ChoiceSelector/Panel/VBoxContainer/HBoxContainer" instance=ExtResource("17_kxneo")]
+modulate = Color(1, 0.94902, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("11_6gsge")
+theme_override_font_sizes/font_size = 30
+text = "Buff: -5 Mk"
+desc = "Increases your damage multiplier by a random amount."
+
+[node name="Debuff" parent="ChoiceSelector/Panel/VBoxContainer/HBoxContainer" instance=ExtResource("17_kxneo")]
+modulate = Color(0.137255, 0.94902, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("11_6gsge")
+theme_override_font_sizes/font_size = 30
+text = "De-buff: -5 Mk"
+desc = "Decreases your oppenent's damage multiplier by a random amount."
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ChoiceSelector/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Defend" parent="ChoiceSelector/Panel/VBoxContainer/HBoxContainer2" instance=ExtResource("17_kxneo")]
+modulate = Color(0.239216, 0.94902, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("11_6gsge")
+theme_override_font_sizes/font_size = 30
+text = "Heal: -10 Milk"
+desc = "Heals a random amount. Fails 50% of the time."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChoiceSelector/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Attack1" parent="ChoiceSelector/Panel/VBoxContainer/HBoxContainer2/HBoxContainer" instance=ExtResource("17_kxneo")]
+unique_name_in_owner = true
+modulate = Color(1, 0.733333, 0.619608, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("11_6gsge")
+theme_override_font_sizes/font_size = 30
+text = "Attack1"
+desc = "Attack1 desc"
+
+[node name="Attack2" parent="ChoiceSelector/Panel/VBoxContainer/HBoxContainer2/HBoxContainer" instance=ExtResource("17_kxneo")]
+unique_name_in_owner = true
+modulate = Color(1, 0.94902, 0.329412, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("11_6gsge")
+theme_override_font_sizes/font_size = 30
+text = "Attack2"
+desc = "Attack2 desc"
+
+[node name="FallingMessageGen" parent="." instance=ExtResource("16_l53ft")]
+
+[node name="FallingMessageLoc" type="Marker2D" parent="."]
+position = Vector2(0, -282)
+
+[node name="ObservingCube" parent="." instance=ExtResource("19_kxneo")]
+position = Vector2(568, 300)
+scale = Vector2(0.403083, 0.405978)
+texture = SubResource("ViewportTexture_ixuqm")
+
+[node name="ObservingCube3" parent="." instance=ExtResource("19_kxneo")]
+position = Vector2(-535, -303)
+scale = Vector2(0.403083, 0.405978)
+texture = SubResource("ViewportTexture_kxneo")
+
+[node name="ObservingCube4" parent="." instance=ExtResource("19_kxneo")]
+position = Vector2(570, -303)
+scale = Vector2(0.403083, 0.405978)
+texture = SubResource("ViewportTexture_l1es7")
+
+[node name="ObservingCube2" parent="." instance=ExtResource("19_kxneo")]
+position = Vector2(-532, 310)
+scale = Vector2(0.403083, 0.405978)
+texture = SubResource("ViewportTexture_u2uoh")
+
+[node name="DebugButtons" type="Panel" parent="."]
+offset_left = 707.0
+offset_top = -162.0
+offset_right = 947.0
+offset_bottom = 34.0
+
+[node name="GridContainer" type="GridContainer" parent="DebugButtons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -58.5
+offset_right = 88.5
+offset_bottom = 58.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugFallMessage" type="Button" parent="DebugButtons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "debug fall message"
+
+[node name="DebugGotoP2Win" type="Button" parent="DebugButtons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "win p2"
+
+[node name="DebugGotoP1Win" type="Button" parent="DebugButtons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "win p1"
+
+[connection signal="pressed" from="ChoiceSelector/Panel/VBoxContainer/HBoxContainer/Buff" to="." method="_on_buff_pressed"]
+[connection signal="pressed" from="ChoiceSelector/Panel/VBoxContainer/HBoxContainer/Debuff" to="." method="_on_debuff_pressed"]
+[connection signal="pressed" from="ChoiceSelector/Panel/VBoxContainer/HBoxContainer2/Defend" to="." method="_on_defend_pressed"]
+[connection signal="pressed" from="ChoiceSelector/Panel/VBoxContainer/HBoxContainer2/HBoxContainer/Attack1" to="." method="_on_attack_1_pressed"]
+[connection signal="pressed" from="ChoiceSelector/Panel/VBoxContainer/HBoxContainer2/HBoxContainer/Attack2" to="." method="_on_attack_2_pressed"]
+[connection signal="pressed" from="DebugButtons/GridContainer/DebugFallMessage" to="." method="_on_debug_fall_message_pressed"]
+[connection signal="pressed" from="DebugButtons/GridContainer/DebugGotoP2Win" to="." method="_on_debug_goto_p_2_win_pressed"]
+[connection signal="pressed" from="DebugButtons/GridContainer/DebugGotoP1Win" to="." method="_on_debug_goto_p_1_win_pressed"]

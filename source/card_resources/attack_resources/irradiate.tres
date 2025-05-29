@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AttackResource" load_steps=2 format=3 uid="uid://3dc7fvd7jeyt"]
+
+[ext_resource type="Script" uid="uid://ct7psbuhlwuwb" path="res://scripts/attack_resource.gd" id="1_ow6hk"]
+
+[resource]
+script = ExtResource("1_ow6hk")
+name = "Irradiate"
+min_damage = 15
+max_damage = 20
+success_chance = 0.9
+milk_cost = 80
+desc = "Geiger go brrr. Does 20 Damage."
+metadata/_custom_type_script = "uid://ct7psbuhlwuwb"

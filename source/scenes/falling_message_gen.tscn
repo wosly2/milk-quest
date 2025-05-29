@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b023xie8f4bql"]
+
+[ext_resource type="Script" uid="uid://dsrxa67v738n0" path="res://scripts/falling_message_gen.gd" id="2_irkjx"]
+[ext_resource type="PackedScene" uid="uid://cet02ne2b6pad" path="res://scenes/falling_message_label.tscn" id="2_j21ly"]
+
+[node name="FallingMessageGen" type="Node"]
+script = ExtResource("2_irkjx")
+FMGPrefab = ExtResource("2_j21ly")
